@@ -1,0 +1,37 @@
+
+import java.awt.HeadlessException;
+import javax.swing.JFrame;
+
+
+public class OyunEkrani extends JFrame{
+
+    public OyunEkrani(String title) throws HeadlessException {
+        super(title);
+    }
+    
+    public static void main(String[] args) {
+        
+        OyunEkrani ekran = new OyunEkrani("Uzay Oyunu");
+        
+        ekran.setFocusable(false);
+        ekran.setResizable(false);
+        ekran.setSize(800,600);
+        ekran.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        Oyun oyun = new Oyun();
+        
+        oyun.requestFocus();//oyun odağı üstüne alıyor.
+        
+        oyun.addKeyListener(oyun); //klayve işlemlerini anlaması için kullanıyoruz.
+        oyun.setFocusable(true);
+        oyun.setFocusTraversalKeysEnabled(false);
+        
+        ekran.add(oyun);
+        
+        ekran.setVisible(true);
+        
+        
+       
+    }
+    
+}
